@@ -16,7 +16,7 @@ tousername = st.text_input("Nombre Destinatario:")
 client = st.text_input("Cliente asociado")
 
 # --- Configuration ---
-WSDL_URL = 'https://sgs.softexpert.cl/apigateway/se/ws/wf_ws.php' #"https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl" 
+WSDL_URL = "https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl" 
 # IMPORTANT: Replace with your actual SOAP service method name
 SOAP_SERVICE_METHOD = "newWorkflowEditData"
 # Your API Key header name
@@ -26,6 +26,7 @@ process_id = '02-SIGSE-CVP000003'
 # --- API Call Button ---
 if st.button("Registrar"):
         st.info("Llamando API... Por favor esperar.")
+        st.session_state.wsdl_url_input = WSDL_URL
         # 1. Prepare HTTP Headers for the API Key
         http_headers = {
             API_KEY_HEADER_NAME: st.secrets["workflow_api_key"]
