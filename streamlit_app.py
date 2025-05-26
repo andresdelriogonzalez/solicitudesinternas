@@ -21,7 +21,8 @@ client = st.text_input("Cliente asociado")
 WSDL_URL = "https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl" 
 ENDPOINT_URL = "https://sgs.softexpert.cl/apigateway/se/ws/wf_ws.php" 
 # IMPORTANT: Replace with your actual SOAP service method name
-SOAP_SERVICE_METHOD = "newWorkflowEditData"
+SOAP_SERVICE_METHOD_1 = "newWorkflowEditData"
+SOAP_SERVICE_METHOD_2 = "executeActivity"
 # Your API Key header name
 API_KEY_HEADER_NAME = "Authorization" 
 process_id = '02-SIGSE-CVP000003'
@@ -31,7 +32,8 @@ DEFAULT_BINDING_NAME = '{urn:workflow}WorkflowBinding'
 if st.button("Registrar"):
         st.info("Llamando API... Por favor esperar.")
         st.session_state.wsdl_url_input = WSDL_URL
-        st.session_state.soap_method_input = SOAP_SERVICE_METHOD
+        st.session_state.soap_method_1 = SOAP_SERVICE_METHOD_1
+        st.session_state.soap_method_2 = SOAP_SERVICE_METHOD_1
         st.session_state.soap_endpoint_url_input = ENDPOINT_URL
         st.session_state.binding_name_input = DEFAULT_BINDING_NAME
 
@@ -70,7 +72,7 @@ if st.button("Registrar"):
 
             # 3. Construct SOAP Body Parameters
             soap_params = {
-                'ProcessID': process_id, # Corrected case to 'ProcessID'
+                'ProcessID': process_id, 
                 'WorkflowTitle': subject,
                 'UserID': fromuser,
                 'EntityList': {
@@ -94,15 +96,27 @@ if st.button("Registrar"):
             }
 
             # 4. Call the SOAP Service
-            with st.spinner(f"Ejecutando método: {st.session_state.soap_method_input}..."):
-                service_method = getattr(service, st.session_state.soap_method_input)
+            with st.spinner(f"Ejecutando método: {st.session_state.soap_method_1}..."):
+                service_method = getattr(service, st.session_state.soap_method_1)
                 response = service_method(**soap_params)
 
             recordID = response['RecordID']
             st.write(recordID)
 
+            # Parameters for execution of activity
+            soap_params_exec = {
+                'WorkflowID': recordID, 
+                'ActivityID': 'Atividade25525151225202',
+                'ActionSequence': 1,
+                'UserID': fromuser
+            }
+
+            with st.spinner(f"Ejecutando método: {st.session_state.soap_method_2}..."):
+                service_method_2 = getattr(service, st.session_state.soap_method_2)
+                response_2 = service_method(**soap_params_exec)
+
             st.success("Registro exitoso!")
-            st.write(response)
+            st.write(response_2)
 
         except HTTPError as e:
             st.error(f"HTTP Error occurred: {e}")
