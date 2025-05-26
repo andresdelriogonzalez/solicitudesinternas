@@ -30,11 +30,11 @@ if st.button("Registrar"):
         http_headers = {
             API_KEY_HEADER_NAME: st.secrets["workflow_api_key"]
         }
-        transport = Transport(timeout=30, headers=http_headers)
+        #transport = Transport(timeout=30, headers=http_headers)
 
         # 2. Initialize Zeep Client
-        settings = Settings(strict=False, xml_huge_tree=True)
-        client = Client(st.session_state.wsdl_url_input, settings=settings, transport=transport)
+        #settings = Settings(strict=False, xml_huge_tree=True)
+        client = Client(st.session_state.wsdl_url_input) #, settings=settings, transport=transport)
 
         # 3. Construct SOAP Body Parameters
         soap_params = {
