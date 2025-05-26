@@ -37,7 +37,7 @@ if st.button("Registrar"):
         #transport = Transport(timeout=30, headers=http_headers)
 
         client = Client('https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl')
-        test = client.service.newWorkflowEditData()
+        test = client.service['newWorkflowEditData']()
         st.title(test)
 
 
