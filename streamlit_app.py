@@ -44,13 +44,13 @@ if st.button("Registrar"):
 
         try:
             # --- DEBUGGING OUTPUTS (before Transport) ---
-            st.info(f"DEBUG: WSDL URL: {st.session_state.wsdl_url_input}")
-            st.info(f"DEBUG: SOAP Endpoint URL: {st.session_state.soap_endpoint_url_input}")
-            st.info(f"DEBUG: Binding Name: {st.session_state.binding_name_input}")
-            st.info(f"DEBUG: API_KEY_HEADER_NAME type: {type(API_KEY_HEADER_NAME)}, value: {API_KEY_HEADER_NAME}")
-            st.info(f"DEBUG: API_KEY type: {type(st.secrets["workflow_api_key"])}, value: {'*' * len(st.secrets["workflow_api_key"])}") # Mask API key for security
-            st.info(f"DEBUG: http_headers type: {type(http_headers)}, value: {http_headers}")
-            st.info(f"DEBUG: timeout value: 30, type: {type(30)}")
+            # st.info(f"DEBUG: WSDL URL: {st.session_state.wsdl_url_input}")
+            # st.info(f"DEBUG: SOAP Endpoint URL: {st.session_state.soap_endpoint_url_input}")
+            # st.info(f"DEBUG: Binding Name: {st.session_state.binding_name_input}")
+            # st.info(f"DEBUG: API_KEY_HEADER_NAME type: {type(API_KEY_HEADER_NAME)}, value: {API_KEY_HEADER_NAME}")
+            # st.info(f"DEBUG: API_KEY type: {type(st.secrets["workflow_api_key"])}, value: {'*' * len(st.secrets["workflow_api_key"])}") # Mask API key for security
+            # st.info(f"DEBUG: http_headers type: {type(http_headers)}, value: {http_headers}")
+            # st.info(f"DEBUG: timeout value: 30, type: {type(30)}")
             # --- END DEBUGGING OUTPUTS ---
 
 
