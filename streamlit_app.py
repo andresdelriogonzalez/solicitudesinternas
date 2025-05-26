@@ -118,8 +118,8 @@ if st.button("Registrar"):
             # st.success("Ejecución de actividad exitosa!")
             # st.write(response_2)
 
-            # st.write("Fue creada la solicitud Nº: ", recordID, " :sunglasses:")
-            st.info("Fue creada la solicitud Nº: ", recordID, " :sunglasses:")
+            st.write("Fue creada la solicitud Nº: ", recordID, " :sunglasses:")
+            
 
         except HTTPError as e:
             st.error(f"HTTP Error occurred: {e}")
