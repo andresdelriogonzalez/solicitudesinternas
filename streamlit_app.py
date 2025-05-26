@@ -24,7 +24,6 @@ SOAP_SERVICE_METHOD = "newWorkflowEditData"
 API_KEY_HEADER_NAME = "Authorization" 
 process_id = '02-SIGSE-CVP000003'
 
-DEFAULT_BINDING_NAME = 'tns:WorkflowBinding'
 
 # --- API Call Button ---
 if st.button("Registrar"):
@@ -40,9 +39,11 @@ if st.button("Registrar"):
 
 
         # 2. Initialize Zeep Client
+        transport = Transport(timeout=30, headers=http_headers)
         settings = Settings(strict=False, xml_huge_tree=True)
         client = Client(
                 st.session_state.wsdl_url_input,
+                transport = transport,
                 settings=settings
             )
 
