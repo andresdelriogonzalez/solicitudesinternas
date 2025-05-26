@@ -24,6 +24,8 @@ SOAP_SERVICE_METHOD = "newWorkflowEditData"
 API_KEY_HEADER_NAME = "Authorization" 
 process_id = '02-SIGSE-CVP000003'
 
+DEFAULT_BINDING_NAME = 'tns:WorkflowBinding'
+
 # --- API Call Button ---
 if st.button("Registrar"):
         st.info("Llamando API... Por favor esperar.")
