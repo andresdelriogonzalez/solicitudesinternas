@@ -47,8 +47,10 @@ if st.button("Registrar"):
             )
 
         service = client.create_service(
-            st.session_state.wsdl_url_input, # The binding name from the WSDL
-            st.session_state.soap_endpoint_url_input # The actual endpoint URL
+            WSDL_URL,
+            ENDPOINT_URL
+            #st.session_state.wsdl_url_input, # The binding name from the WSDL
+            #st.session_state.soap_endpoint_url_input # The actual endpoint URL
         )
 
         # 3. Construct SOAP Body Parameters
