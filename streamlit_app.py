@@ -40,7 +40,7 @@ if st.button("Registrar"):
             'ProcessId': process_id,
             'WorkflowTitle': subject,
             'UserID': fromuser,
-            'EntityID':'sigsecvp01'
+            'EntityID':'sigsecvp01',
             'texto7': fromuser,
             'texto6': fromusername,
             'texto8': touser,
