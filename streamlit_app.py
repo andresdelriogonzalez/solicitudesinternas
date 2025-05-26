@@ -3,6 +3,7 @@ from zeep import Client, Settings
 from zeep.transports import Transport
 import xml.etree.ElementTree as ET
 from requests.exceptions import HTTPError
+from requests import Session
 
 st.title('Solicitudes Internas')
 
@@ -52,7 +53,9 @@ if st.button("Registrar"):
 
 
             # 2. Initialize Zeep Client
-            transport = Transport(timeout=30, headers=http_headers)
+            session = Session()
+            session.headers.update(http_headers)
+            transport = Transport(session=session)
             settings = Settings(strict=False, xml_huge_tree=True)
             client = Client(
                     st.session_state.wsdl_url_input,
@@ -61,10 +64,8 @@ if st.button("Registrar"):
                 )
 
             service = client.create_service(
-                WSDL_URL,
-                ENDPOINT_URL
-                #st.session_state.wsdl_url_input, # The binding name from the WSDL
-                #st.session_state.soap_endpoint_url_input # The actual endpoint URL
+                st.session_state.wsdl_url_input, # The binding name from the WSDL
+                st.session_state.soap_endpoint_url_input # The actual endpoint URL
             )
 
             # 3. Construct SOAP Body Parameters
