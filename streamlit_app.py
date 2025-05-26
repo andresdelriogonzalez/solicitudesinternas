@@ -101,7 +101,6 @@ if st.button("Registrar"):
                 response_1 = service_method_1(**soap_params)
 
             recordID = response_1['RecordID']
-            st.write(recordID)
 
             # Parameters for execution of activity
             soap_params_exec = {
@@ -116,8 +115,10 @@ if st.button("Registrar"):
                 service_method_2 = getattr(service, st.session_state.soap_method_2)
                 response_2 = service_method_2(**soap_params_exec)
 
-            st.success("Registro exitoso!")
-            st.write(response_2)
+            # st.success("Ejecución de actividad exitosa!")
+            # st.write(response_2)
+
+            st.write("Fue creada la solicitud Nº: ", recordID, " :sunglasses:")
 
         except HTTPError as e:
             st.error(f"HTTP Error occurred: {e}")
