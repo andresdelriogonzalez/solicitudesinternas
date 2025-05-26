@@ -70,17 +70,37 @@ if st.button("Registrar"):
 
             # 3. Construct SOAP Body Parameters
             soap_params = {
-                'ProcessId': process_id,
+                'ProcessID': process_id, # Corrected case to 'ProcessID'
                 'WorkflowTitle': subject,
                 'UserID': fromuser,
-                'EntityID':'sigsecvp01',
-                'texto7': fromuser,
-                'texto6': fromusername,
-                'texto8': touser,
-                'texto9': tousername,
-                'texto5': subject,
-                'paragrafo13': details,
-                'texto4': client
+                'Requester': { # Added Requester as per WSDL signature
+                    'User': {
+                        'UserID': fromuser # Assuming the requester is the 'fromuser'
+                    }
+                    # If there's a Customer part, it would go here:
+                    # 'Customer': {
+                    #     'CustomerID': 'some_customer_id',
+                    #     'Contact': 'some_contact_info'
+                    # }
+                },
+                'EntityList': {
+                    'Entity': [
+                        {
+                            'EntityID':'sigsecvp01',
+                            'EntityAttributeList': {
+                                'EntityAttribute': [
+                                    {'EntityAttributeID': 'texto7', 'EntityAttributeValue': fromuser},
+                                    {'EntityAttributeID': 'texto6', 'EntityAttributeValue': fromusername},
+                                    {'EntityAttributeID': 'texto8', 'EntityAttributeValue': touser},
+                                    {'EntityAttributeID': 'texto9', 'EntityAttributeValue': tousername},
+                                    {'EntityAttributeID': 'texto5', 'EntityAttributeValue': subject},
+                                    {'EntityAttributeID': 'paragrafo13', 'EntityAttributeValue': details},
+                                    {'EntityAttributeID': 'texto4', 'EntityAttributeValue': client}
+                                ]
+                            }
+                        }
+                    ]
+                }
             }
 
             # 4. Call the SOAP Service
