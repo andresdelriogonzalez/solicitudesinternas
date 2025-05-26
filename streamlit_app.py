@@ -108,7 +108,8 @@ if st.button("Registrar"):
                 'WorkflowID': recordID, 
                 'ActivityID': 'Atividade25525151225202',
                 'ActionSequence': 1,
-                'UserID': fromuser
+                'UserID': fromuser,
+                'ActivityOrder' : None
             }
 
             with st.spinner(f"Ejecutando método: {st.session_state.soap_method_2}..."):
