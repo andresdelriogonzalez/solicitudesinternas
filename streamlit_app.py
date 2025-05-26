@@ -38,11 +38,10 @@ if st.button("Registrar"):
 
 
         # 2. Initialize Zeep Client
-        #settings = Settings(strict=False, xml_huge_tree=True)
+        settings = Settings(strict=False, xml_huge_tree=True)
         client = Client(
-                wsdl=st.session_state.wsdl_url_input,
-                transport=None, 
-                settings=None
+                st.session_state.wsdl_url_input,
+                settings=settings
             )
 
         service = client.create_service(
