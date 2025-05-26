@@ -16,7 +16,7 @@ tousername = st.text_input("Nombre Destinatario:")
 client = st.text_input("Cliente asociado")
 
 # --- Configuration ---
-WSDL_URL = "https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl" 
+WSDL_URL = 'https://sgs.softexpert.cl/apigateway/se/ws/wf_ws.php' #"https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl" 
 # IMPORTANT: Replace with your actual SOAP service method name
 SOAP_SERVICE_METHOD = "newWorkflowEditData"
 # Your API Key header name
