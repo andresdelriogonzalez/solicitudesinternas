@@ -39,10 +39,14 @@ if st.button("Registrar"):
         # 2. Initialize Zeep Client
         #settings = Settings(strict=False, xml_huge_tree=True)
         client = Client(
-                st.session_state.wsdl_url_input,
+                wsdl=st.session_state.wsdl_url_input,
                 transport=None, 
                 settings=None,
-                service_url=st.session_state.soap_endpoint_url_input 
+                wsse=None, 
+                service_name=None, 
+                port_name=None, 
+                service_url=st.session_state.soap_endpoint_url_input,
+                plugins=None
             )
 
         # 3. Construct SOAP Body Parameters
