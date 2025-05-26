@@ -1,5 +1,2 @@
 streamlit>=1.26.0
-Client
-Settings
-Transport
-xml.etree.ElementTree
+zeep
