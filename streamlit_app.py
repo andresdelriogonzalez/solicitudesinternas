@@ -99,7 +99,7 @@ if st.button("Registrar"):
                 response = service_method(**soap_params)
 
             st.success("Registro exitoso!")
-            st.json(response)
+            st.write(response)
 
         except HTTPError as e:
             st.error(f"HTTP Error occurred: {e}")
