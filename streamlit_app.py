@@ -40,8 +40,6 @@ if st.button("Registrar"):
         #settings = Settings(strict=False, xml_huge_tree=True)
         client = Client(
                 st.session_state.wsdl_url_input,
-                #settings=settings,
-                #transport=transport,
                 service_url=st.session_state.soap_endpoint_url_input 
             )
 
