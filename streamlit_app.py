@@ -73,16 +73,6 @@ if st.button("Registrar"):
                 'ProcessID': process_id, # Corrected case to 'ProcessID'
                 'WorkflowTitle': subject,
                 'UserID': fromuser,
-                'Requester': { # Added Requester as per WSDL signature
-                    'User': {
-                        'UserID': fromuser # Assuming the requester is the 'fromuser'
-                    }
-                    # If there's a Customer part, it would go here:
-                    # 'Customer': {
-                    #     'CustomerID': 'some_customer_id',
-                    #     'Contact': 'some_contact_info'
-                    # }
-                },
                 'EntityList': {
                     'Entity': [
                         {
