@@ -27,6 +27,7 @@ process_id = '02-SIGSE-CVP000003'
 if st.button("Registrar"):
         st.info("Llamando API... Por favor esperar.")
         st.session_state.wsdl_url_input = WSDL_URL
+        st.session_state.soap_method_input = SOAP_SERVICE_METHOD
         # 1. Prepare HTTP Headers for the API Key
         http_headers = {
             API_KEY_HEADER_NAME: st.secrets["workflow_api_key"]
