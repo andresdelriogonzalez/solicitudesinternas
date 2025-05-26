@@ -15,7 +15,7 @@ subject = st.text_input("Asunto:")
 details = st.text_area("Detalles:")
 touser = st.text_input("Matrícula Destinatario:")
 tousername = st.text_input("Nombre Destinatario:")
-client = st.text_input("Cliente asociado")
+client_asociado = st.text_input("Cliente asociado")
 
 # --- Configuration ---
 WSDL_URL = "https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl" 
@@ -87,7 +87,7 @@ if st.button("Registrar"):
                                     {'EntityAttributeID': 'texto9', 'EntityAttributeValue': tousername},
                                     {'EntityAttributeID': 'texto5', 'EntityAttributeValue': subject},
                                     {'EntityAttributeID': 'paragrafo13', 'EntityAttributeValue': details},
-                                    {'EntityAttributeID': 'texto4', 'EntityAttributeValue': client}
+                                    {'EntityAttributeID': 'texto4', 'EntityAttributeValue': client_asociado}
                                 ]
                             }
                         }
@@ -98,9 +98,9 @@ if st.button("Registrar"):
             # 4. Call the SOAP Service
             with st.spinner(f"Ejecutando método: {st.session_state.soap_method_1}..."):
                 service_method = getattr(service, st.session_state.soap_method_1)
-                response = service_method(**soap_params)
+                response_1 = service_method(**soap_params)
 
-            recordID = response['RecordID']
+            recordID = response_1['RecordID']
             st.write(recordID)
 
             # Parameters for execution of activity
