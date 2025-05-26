@@ -36,6 +36,11 @@ if st.button("Registrar"):
         }
         #transport = Transport(timeout=30, headers=http_headers)
 
+        client = Client('https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl')
+        test = client.service.newWorkflowEditData()
+        st.write(test)
+
+
         # 2. Initialize Zeep Client
         #settings = Settings(strict=False, xml_huge_tree=True)
         client = Client(
