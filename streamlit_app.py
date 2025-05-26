@@ -97,8 +97,8 @@ if st.button("Registrar"):
 
             # 4. Call the SOAP Service
             with st.spinner(f"Ejecutando método: {st.session_state.soap_method_1}..."):
-                service_method = getattr(service, st.session_state.soap_method_1)
-                response_1 = service_method(**soap_params)
+                service_method_1 = getattr(service, st.session_state.soap_method_1)
+                response_1 = service_method_1(**soap_params)
 
             recordID = response_1['RecordID']
             st.write(recordID)
@@ -113,7 +113,7 @@ if st.button("Registrar"):
 
             with st.spinner(f"Ejecutando método: {st.session_state.soap_method_2}..."):
                 service_method_2 = getattr(service, st.session_state.soap_method_2)
-                response_2 = service_method(**soap_params_exec)
+                response_2 = service_method_2(**soap_params_exec)
 
             st.success("Registro exitoso!")
             st.write(response_2)
