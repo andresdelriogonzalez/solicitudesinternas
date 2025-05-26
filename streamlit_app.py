@@ -64,9 +64,9 @@ if st.button("Registrar"):
                 )
 
             service = client.create_service(
-                st.session_state.wsdl_url_input, # The binding name from the WSDL
-                st.session_state.soap_endpoint_url_input # The actual endpoint URL
-            )
+                st.session_state.binding_name_input, 
+                st.session_state.soap_endpoint_url_input
+)
 
             # 3. Construct SOAP Body Parameters
             soap_params = {
@@ -85,7 +85,7 @@ if st.button("Registrar"):
 
             # 4. Call the SOAP Service
             with st.spinner(f"Ejecutando método: {st.session_state.soap_method_input}..."):
-                service_method = getattr(client.service, st.session_state.soap_method_input)
+                service_method = getattr(service, st.session_state.soap_method_input)
                 response = service_method(**soap_params)
 
             st.success("Registro exitoso!")
