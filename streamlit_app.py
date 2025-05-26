@@ -98,6 +98,9 @@ if st.button("Registrar"):
                 service_method = getattr(service, st.session_state.soap_method_input)
                 response = service_method(**soap_params)
 
+            recordID = response['RecordID']
+            st.write(recordID)
+
             st.success("Registro exitoso!")
             st.write(response)
 
