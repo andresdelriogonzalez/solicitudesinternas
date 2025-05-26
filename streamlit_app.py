@@ -1,5 +1,6 @@
 import streamlit as st
-from zeep import Client, Settings, Transport
+from zeep import Client, Settings
+from zeep.transports import Transport
 import xml.etree.ElementTree as ET
 
 st.title('Solicitudes Internas')
