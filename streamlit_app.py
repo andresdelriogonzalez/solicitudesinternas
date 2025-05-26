@@ -16,8 +16,8 @@ tousername = st.text_input("Nombre Destinatario:")
 client = st.text_input("Cliente asociado")
 
 # --- Configuration ---
-#WSDL_URL = "https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl" 
-WSDL_URL = "https://sgs.softexpert.cl/apigateway/se/ws/wf_ws.php" 
+WSDL_URL = "https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl" 
+ENDPOINT_URL = "https://sgs.softexpert.cl/apigateway/se/ws/wf_ws.php" 
 # IMPORTANT: Replace with your actual SOAP service method name
 SOAP_SERVICE_METHOD = "newWorkflowEditData"
 # Your API Key header name
@@ -29,6 +29,7 @@ if st.button("Registrar"):
         st.info("Llamando API... Por favor esperar.")
         st.session_state.wsdl_url_input = WSDL_URL
         st.session_state.soap_method_input = SOAP_SERVICE_METHOD
+        st.session_state.soap_endpoint_url_input = ENDPOINT_URL
         # 1. Prepare HTTP Headers for the API Key
         http_headers = {
             API_KEY_HEADER_NAME: st.secrets["workflow_api_key"]
@@ -37,7 +38,12 @@ if st.button("Registrar"):
 
         # 2. Initialize Zeep Client
         #settings = Settings(strict=False, xml_huge_tree=True)
-        client = Client(st.session_state.wsdl_url_input) #, settings=settings, transport=transport)
+        client = Client(
+                st.session_state.wsdl_url_input,
+                #settings=settings,
+                #transport=transport,
+                service_url=st.session_state.soap_endpoint_url_input 
+            )
 
         # 3. Construct SOAP Body Parameters
         soap_params = {
