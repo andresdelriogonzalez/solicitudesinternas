@@ -33,7 +33,7 @@ if st.button("Registrar"):
         st.info("Llamando API... Por favor esperar.")
         st.session_state.wsdl_url_input = WSDL_URL
         st.session_state.soap_method_1 = SOAP_SERVICE_METHOD_1
-        st.session_state.soap_method_2 = SOAP_SERVICE_METHOD_1
+        st.session_state.soap_method_2 = SOAP_SERVICE_METHOD_2
         st.session_state.soap_endpoint_url_input = ENDPOINT_URL
         st.session_state.binding_name_input = DEFAULT_BINDING_NAME
 
