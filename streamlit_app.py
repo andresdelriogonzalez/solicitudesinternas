@@ -36,23 +36,19 @@ if st.button("Registrar"):
         }
         #transport = Transport(timeout=30, headers=http_headers)
 
-        client = Client('https://sgs.softexpert.cl/se/ws/wf_ws.php?wsdl')
-        test = client.service['newWorkflowEditData']()
-        st.title(test)
-
 
         # 2. Initialize Zeep Client
         #settings = Settings(strict=False, xml_huge_tree=True)
         client = Client(
                 wsdl=st.session_state.wsdl_url_input,
                 transport=None, 
-                settings=None,
-                wsse=None, 
-                service_name=None, 
-                port_name=None, 
-                service_url=st.session_state.soap_endpoint_url_input,
-                plugins=None
+                settings=None
             )
+
+        service = client.create_service(
+            st.session_state.wsdl_url_input, # The binding name from the WSDL
+            st.session_state.soap_endpoint_url_input # The actual endpoint URL
+        )
 
         # 3. Construct SOAP Body Parameters
         soap_params = {
